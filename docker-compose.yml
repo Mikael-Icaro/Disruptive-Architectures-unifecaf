@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: docker.io/library/postgres:16
+    container_name: postgres-iot
+    environment:
+      POSTGRES_USER: iot
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-iot_senha}
+      POSTGRES_DB: iot
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
